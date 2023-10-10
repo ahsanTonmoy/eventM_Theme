@@ -1,0 +1,15 @@
+/* all custom style here */
+
+.navbar  .active{
+    background: none !important;
+    color: #ffbe30 !important;
+    border-bottom: 2px solid #ffbe30;
+    border-radius: 0;
+}
+.navbar li{
+    margin: 0 6px;
+}
+
+.srcArea:hover .search{
+    display: flex !important;
+}
