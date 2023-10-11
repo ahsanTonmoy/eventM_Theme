@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navigetion = () => {
+    const { user, LogOut} = useContext(AuthContext);
     const links = <>
         <li><NavLink to={'/'}>home</NavLink></li>
         <li><NavLink to={'/about'}>about</NavLink></li>
@@ -9,6 +12,12 @@ const Navigetion = () => {
         <li><NavLink to={'/contuct'}>contuct</NavLink></li>
         <li><NavLink to={'/booking'}>booking</NavLink></li>
     </>
+
+    const hendleSignOut = () => {
+        LogOut()
+            .then()
+            .catch()
+    }
     return (
         <div>
             <div className="navbar px-4 md:px-16 py-4 bg-base-100 uppercase font-black">
@@ -46,11 +55,36 @@ const Navigetion = () => {
                         </div>
                     </div>
                     <div className="User mx-4">
-                        <Link to={'/login'}><AiOutlineUser></AiOutlineUser></Link>
+                        {
+                            user ?
+                                <div className="dropdown dropdown-end">
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src={user.photoURL } />
+                                        </div>
+                                    </label>
+                                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-56">
+                                        <li>
+                                            <a className="justify-between">
+                                                {
+                                                    user.displayName
+                                                }
+
+                                            </a>
+                                        </li>
+                                        <li><Link to={'/profile'}>Profile</Link></li>
+                                        <li><button onClick={hendleSignOut}>Logout</button></li>
+                                    </ul>
+                                </div>
+                                :
+                                <Link to={'/login'}><AiOutlineUser></AiOutlineUser></Link>
+                        }
+
+
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
