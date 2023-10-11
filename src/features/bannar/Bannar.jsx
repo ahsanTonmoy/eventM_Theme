@@ -11,7 +11,7 @@ const Bannar = () => {
                             <div className="text-[#ffbe30] text-2xl p-4">one of the best event manegment <br></br> agency in bangladesh</div>
                             </h1>
                           
-                            <button className="btn hover:text-white font-bold btn-outline btn-warning">seee all events</button>
+                            <button className="btn hover:text-white font-bold btn-outline btn-warning">see all events</button>
                         </div>
                     </div>
                 </div>
